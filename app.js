@@ -4,7 +4,7 @@ function sc(){top.classList.toggle('sc',window.scrollY>8)}sc();window.addEventLi
 b.addEventListener('click',function(){var o=top.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Zamknij menu':'Otwórz menu')});
 menu.addEventListener('click',function(e){if(e.target.closest('a')){top.classList.remove('open');b.setAttribute('aria-expanded','false')}});
 /* aktywna pozycja menu */
-var links=[].slice.call(menu.querySelectorAll('a[href^="#"]:not(.btn)'));
+var links=[].slice.call(menu.querySelectorAll('a[href^="#"]:not(.btn):not([href="#"])'));
 var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+x.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});secs.forEach(function(s){io.observe(s)})}
 /* karuzela: palec, mysz, strzalki */
